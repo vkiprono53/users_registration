@@ -9,7 +9,7 @@ import java.io.Serializable;
  * @project usersregistration
  */
 @Entity
-public class User implements Serializable {
+public class UserReg implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -34,7 +34,7 @@ public class User implements Serializable {
     @NotBlank(message = "email is required")
     private String email;
 
-    public User() {
+    public UserReg() {
     }
 
     public Long getId() {
@@ -85,10 +85,9 @@ public class User implements Serializable {
         this.email = email;
     }
 
-
     @Override
     public String toString() {
-        return "User{" +
+        return "UserReg{" +
                 "id=" + id +
                 ", firstname='" + firstname + '\'' +
                 ", lastname='" + lastname + '\'' +

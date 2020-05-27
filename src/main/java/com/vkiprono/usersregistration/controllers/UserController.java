@@ -1,6 +1,6 @@
 package com.vkiprono.usersregistration.controllers;
 
-import com.vkiprono.usersregistration.models.User;
+import com.vkiprono.usersregistration.models.UserReg;
 import com.vkiprono.usersregistration.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,7 +15,7 @@ import javax.validation.Valid;
  * @project usersregistration
  */
 @Controller
-@RequestMapping("/users")
+@RequestMapping("/")
 public class UserController {
     private UserService userService;
 
@@ -24,59 +24,60 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping("list")
+    @GetMapping
     public String listUsers(Model model) {
         System.out.println("********Retrieving data from db*******");
         model.addAttribute("users", userService.getAllUsers());
         return "index";
     }
 
-    @GetMapping("register")
-    public String showAddForm(User user) {
+    @GetMapping("/users/register")
+    public String showAddForm(UserReg userReg) {
         System.out.println("**********Showing form********");
         return "add_user";
 
     }
 
-    @PostMapping("add")
-    public String createUser(@Valid User user, BindingResult bindingResult, Model model) {
+    @PostMapping("/users/add")
+    public String createUser(@Valid UserReg userReg, BindingResult bindingResult, Model model) {
         System.out.println("**********Beginning to add user********");
 
         if (bindingResult.hasErrors()) {
             return "add_user";
         }
-        userService.saveUser(user);
+        userService.saveUser(userReg);
         model.addAttribute("users", userService.getAllUsers());
-        return "index";
+        return "redirect:/";
     }
 
-    @GetMapping("delete/{id}")
+    @GetMapping("users/delete/{id}")
     public String deleteUser(@PathVariable Long id, Model model) {
-        User user = userService.findUserById(id).
+        UserReg userReg = userService.findUserById(id).
                 orElseThrow(() -> new IllegalArgumentException("User with " + id + "Cannot be found"));
 
-        userService.deleteUser(user);
+        userService.deleteUser(userReg);
         model.addAttribute("users", userService.getAllUsers());
 
-        return "index";
+//        return "index";
+        return "redirect:/";
     }
 
-    @GetMapping("editUser/{id}")
+    @GetMapping("users/editUser/{id}")
     public String showEditForm(@PathVariable Long id, Model model) {
-        User user = userService.findUserById(id).
+        UserReg userReg = userService.findUserById(id).
                 orElseThrow(() -> new IllegalArgumentException("User with " + id + "Cannot be found"));
-        model.addAttribute("user", user);
+        model.addAttribute("userReg", userReg);
         return "update_user";
     }
 
-    @PostMapping("/updateUser/{id}")
-    public String editUser(@PathVariable Long id, @Valid User user, BindingResult bindingResult, Model model) {
+    @PostMapping("users/updateUser/{id}")
+    public String editUser(@PathVariable Long id, @Valid UserReg userReg, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
-            user.setId(id);
+            userReg.setId(id);
             return "update_user";
         }
-        userService.saveUser(user);
+        userService.saveUser(userReg);
         model.addAttribute("users", userService.getAllUsers());
-        return "index";
+        return "redirect:/";
     }
 }

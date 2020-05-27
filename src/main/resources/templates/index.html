@@ -42,14 +42,14 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="user : ${users}">
-                    <td th:text="${user.firstname}"></td>
-                    <td th:text="${user.lastname}"></td>
-                    <td th:text="${user.age}"></td>
-                    <td th:text="${user.mobile}"></td>
-                    <td th:text="${user.email}"></td>
-                    <td><a th:href="@{/users/delete/{id}(id=${user.id})}" class="btn btn-danger">Delete</a> </td>
-                    <td><a th:href="@{/users/editUser/{id}(id=${user.id})}" class="btn btn-success">Edit</a> </td>
+                <tr th:each="userReg : ${users}">
+                    <td th:text="${userReg.firstname}"></td>
+                    <td th:text="${userReg.lastname}"></td>
+                    <td th:text="${userReg.age}"></td>
+                    <td th:text="${userReg.mobile}"></td>
+                    <td th:text="${userReg.email}"></td>
+                    <td><a th:href="@{/users/delete/{id}(id=${userReg.id})}" class="btn btn-danger">Delete</a> </td>
+                    <td><a th:href="@{/users/editUser/{id}(id=${userReg.id})}" class="btn btn-success">Edit</a> </td>
                 </tr>
                 </tbody>
             </table>

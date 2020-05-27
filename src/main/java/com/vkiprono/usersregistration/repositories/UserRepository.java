@@ -1,6 +1,6 @@
 package com.vkiprono.usersregistration.repositories;
 
-import com.vkiprono.usersregistration.models.User;
+import com.vkiprono.usersregistration.models.UserReg;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -9,5 +9,5 @@ import org.springframework.stereotype.Repository;
  * @project usersregistration
  */
 @Repository
-public interface UserRepository extends JpaRepository<User, Long> {
+public interface UserRepository extends JpaRepository<UserReg, Long> {
 }

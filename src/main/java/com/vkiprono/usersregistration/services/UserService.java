@@ -1,6 +1,6 @@
 package com.vkiprono.usersregistration.services;
 
-import com.vkiprono.usersregistration.models.User;
+import com.vkiprono.usersregistration.models.UserReg;
 import com.vkiprono.usersregistration.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,21 +21,21 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public List<User> getAllUsers(){
+    public List<UserReg> getAllUsers(){
         return userRepository.findAll();
     }
 
-    public User saveUser(User user){
-         return userRepository.save(user);
+    public UserReg saveUser(UserReg userReg){
+         return userRepository.save(userReg);
     }
 
-    public Optional<User> findUserById(Long id){
+    public Optional<UserReg> findUserById(Long id){
         return userRepository.findById(id);
     }
 
-    public void deleteUser(User user){
+    public void deleteUser(UserReg userReg){
 
-        userRepository.delete(user);
+        userRepository.delete(userReg);
     }
 
 }

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>UserReg</title>
     <link href="bootstrap-4.0.0-dist/css/bootstrap.min.css" rel="stylesheet">
+
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -21,7 +22,7 @@
         </ul>
     </div>
 </nav>
-<form action="#" th:action="@{/users/updateUser/{id}(id=${user.id})}" th:object="${user}" method="post">
+<form action="#" th:action="@{/users/updateUser/{id}(id=${userReg.id})}" th:object="${userReg}" method="post">
     <div>
         <h2>Update User</h2>
     </div>
@@ -59,5 +60,7 @@
 </form>
 </body>
 <script src="bootstrap-4.0.0-dist/js/bootstrap.js">
+
 </script>
+
 </html>
