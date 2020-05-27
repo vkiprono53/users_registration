@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>UserReg</title>
+    <link href="bootstrap-4.0.0-dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="/">UserReg</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02"
+            aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarColor02">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="/">Home<span class="sr-only">(current)</span></a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+    <div>
+        <h2>Register New User</h2>
+    </div>
+<form action="#" th:action="@{/users/add}" th:object="${user}" method="post">
+
+    <div class="form-group">
+        <label for="firstname">Firstname</label>
+        <input type="text" th:field="*{firstname}" class="form-control" id="firstname" placeholder="Enter Firstname">
+        <span th:if="${#fields.hasErrors('firstname')}" th:errors="*{firstname}"></span>
+    </div>
+
+    <div class="form-group">
+        <label for="lastname">Lastname</label>
+        <input type="text" th:field="*{lastname}" class="form-control" id="lastname" placeholder="Enter lastname">
+        <span th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}"></span>
+    </div>
+
+    <div class="form-group">
+        <label for="age">Age</label>
+        <input type="number" th:field="*{age}" class="form-control" id="age" placeholder="Enter age">
+        <span th:if="${#fields.hasErrors('age')}" th:errors="*{age}"></span>
+    </div>
+
+    <div class="form-group">
+        <label for="mobile">Mobile</label>
+        <input type="text" th:field="*{mobile}" class="form-control" id="mobile" placeholder="Enter mobile">
+        <span th:if="${#fields.hasErrors('mobile')}" th:errors="*{mobile}"></span>
+    </div>
+
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" th:field="*{email}" class="form-control" id="email" placeholder="Enter email">
+        <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>
+</body>
+<script src="bootstrap-4.0.0-dist/js/bootstrap.js">
+</script>
+</html>
